@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_w"
+        android:clickable="true"
+        android:focusable="true">
+
+        <com.explead.seasons.winter.ui.winter_views.SnowfallView
+            android:id="@+id/snowfall"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    style="@style/LevelFontStyle"
+                    android:id="@+id/tv_december"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/big_text"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/big_margin"
+                    android:layout_marginBottom="@dimen/standard_margin"
+                    android:text="@string/december"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/gv_december"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none"
+                    android:padding="@dimen/more_standard_margin"
+                    android:stretchMode="columnWidth"
+                    android:verticalSpacing="@dimen/big_margin"
+                    android:horizontalSpacing="@dimen/more_standard_margin"/>
+
+                <TextView
+                    style="@style/LevelFontStyle"
+                    android:id="@+id/tv_january"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/big_text"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/standard_margin"
+                    android:layout_marginBottom="@dimen/standard_margin"
+                    android:text="@string/january"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/gv_january"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none"
+                    android:padding="@dimen/more_standard_margin"
+                    android:stretchMode="columnWidth"
+                    android:verticalSpacing="@dimen/big_margin"
+                    android:horizontalSpacing="@dimen/more_standard_margin"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <ImageView
+                android:id="@+id/bottom_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/bottom_winter_layout"
+                android:adjustViewBounds="true" />
+
+    </RelativeLayout>
+
+</layout>
