@@ -11,6 +11,7 @@ import com.example.game.common.config.DeviceUtils
 import com.example.game.common.model.enums.Month
 import com.example.game.common.ui.fragments.LevelsFragment
 import com.example.game.databinding.FragmentLevelsWinterBinding
+import com.example.game.winter.adapters.WinterLevelsAdapter
 import com.example.game.winter.contracts.WinterLevelsContract
 import com.example.game.winter.model.WinterButtonLevel
 import java.util.*
@@ -46,8 +47,8 @@ class WinterLevelsFragment : LevelsFragment<WinterButtonLevel>(), WinterLevelsCo
 
     override fun createThreeAdapter() {}
 
-    override fun createGrid(month: Month): LevelsAdapter {
-        return LevelsAdapter<>(create(month), month)
+    override fun createGrid(month: Month): LevelsAdapter<WinterButtonLevel> {
+        return WinterLevelsAdapter(create(month), month)
     }
 
     override fun create(month: Month): ArrayList<WinterButtonLevel> {
@@ -59,10 +60,10 @@ class WinterLevelsFragment : LevelsFragment<WinterButtonLevel>(), WinterLevelsCo
     }
 
     override fun onStartSkyDownfallAnimation() {
-        viewHolder.snowfall.startAnimation()
+        TODO("как будет переделан снегопад")
     }
 
     override fun onStopSkyDownfallAnimation() {
-        viewHolder.snowfall.stopAnimation()
+        TODO("как будет переделан снегопад")
     }
 }

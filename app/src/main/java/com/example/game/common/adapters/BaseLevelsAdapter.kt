@@ -3,10 +3,9 @@ package com.example.game.common.adapters
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.game.common.adapters.holders.LevelButtonHolder
-import com.example.game.common.intrefaces.OnButtonLevelListener
 import com.example.game.common.model.ButtonLevel
 
-class BaseLevelsAdapter<BUTTON_LEVEL: ButtonLevel> : RecyclerView.Adapter<LevelButtonHolder>() {
+abstract class BaseLevelsAdapter<BUTTON_LEVEL: ButtonLevel> : RecyclerView.Adapter<LevelButtonHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LevelButtonHolder {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

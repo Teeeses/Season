@@ -18,9 +18,9 @@ import java.util.ArrayList
 
 abstract class LevelsFragment<BUTTONS : ButtonLevel>: BaseFragment(), SkyDownfallInterface, OnButtonLevelListener {
 
-    protected lateinit var oneAdapter: LevelsAdapter
-    protected lateinit var twoAdapter: LevelsAdapter
-    protected lateinit var threeAdapter: LevelsAdapter
+    protected lateinit var oneAdapter: LevelsAdapter<BUTTONS>
+    protected lateinit var twoAdapter: LevelsAdapter<BUTTONS>
+    protected lateinit var threeAdapter: LevelsAdapter<BUTTONS>
 
     private lateinit var sbLevelClosed: Snackbar
 
@@ -53,7 +53,7 @@ abstract class LevelsFragment<BUTTONS : ButtonLevel>: BaseFragment(), SkyDownfal
 
     abstract fun createThreeAdapter()
 
-    abstract fun createGrid(month: Month): LevelsAdapter
+    abstract fun createGrid(month: Month): LevelsAdapter<BUTTONS>
 
     abstract fun create(month: Month): ArrayList<BUTTONS>
 
