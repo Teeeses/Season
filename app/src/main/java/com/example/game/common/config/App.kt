@@ -1,25 +1,21 @@
 package com.example.game.common.config
 
 import android.app.Application
-import com.example.game.common.config.di.*
+import com.example.game.common.di.AppDiComponent
+import com.example.game.common.di.DaggerAppDiComponent
+import com.example.game.common.di.modules.ApplicationModule
 
 class App: Application() {
     lateinit var component: AppDiComponent
-        private set
 
     override fun onCreate() {
         super.onCreate()
-        INSTANCE = this
-        component = DaggerAppDiComponent.builder()
-            .contextModule(ContextModule(applicationContext))
-            .saverSpref(GameUtilsModule())
-            .mainActivityModule(MainActivityModule())
-            .build()
+        setup()
     }
 
-    companion object {
-        private lateinit var INSTANCE: App
-        @JvmStatic
-        fun get(): App = INSTANCE
+    private fun setup() {
+        component = DaggerAppDiComponent.builder()
+            .applicationModule(ApplicationModule(this))
+            .build()
     }
 }

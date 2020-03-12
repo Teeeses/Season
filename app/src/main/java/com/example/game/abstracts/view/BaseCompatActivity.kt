@@ -6,10 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 
 abstract class BaseCompatActivity: AppCompatActivity(), BaseView {
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
-        init(savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        inject()
     }
 
-    protected abstract fun init(savedInstanceState: Bundle?)
+    protected abstract fun inject()
 }

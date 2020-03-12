@@ -19,7 +19,7 @@ class MyPagerAdapter(fm: FragmentManager, behavior: Int = BEHAVIOR_RESUME_ONLY_C
     }
 
     override fun getPageTitle(position: Int): String? {
-        return Integer.toString(position + 1)
+        return (position + 1).toString()
     }
 
     override fun getItem(position: Int): Fragment {

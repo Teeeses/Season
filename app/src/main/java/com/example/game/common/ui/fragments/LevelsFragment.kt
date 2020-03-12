@@ -1,6 +1,5 @@
 package com.example.game.common.ui.fragments
 
-import android.graphics.Typeface
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
@@ -14,13 +13,13 @@ import com.example.game.common.intrefaces.SkyDownfallInterface
 import com.example.game.common.model.ButtonLevel
 import com.example.game.common.model.enums.Month
 import com.google.android.material.snackbar.Snackbar
-import java.util.ArrayList
+import java.util.*
 
-abstract class LevelsFragment<BUTTONS : ButtonLevel>: BaseFragment(), SkyDownfallInterface, OnButtonLevelListener {
+abstract class LevelsFragment<BUTTON_LEVEL : ButtonLevel>: BaseFragment(), SkyDownfallInterface, OnButtonLevelListener {
 
-    protected lateinit var oneAdapter: LevelsAdapter<BUTTONS>
-    protected lateinit var twoAdapter: LevelsAdapter<BUTTONS>
-    protected lateinit var threeAdapter: LevelsAdapter<BUTTONS>
+    protected var oneAdapter: LevelsAdapter<BUTTON_LEVEL>? = null
+    protected var twoAdapter: LevelsAdapter<BUTTON_LEVEL>? = null
+    protected var threeAdapter: LevelsAdapter<BUTTON_LEVEL>? = null
 
     private lateinit var sbLevelClosed: Snackbar
 
@@ -38,7 +37,8 @@ abstract class LevelsFragment<BUTTONS : ButtonLevel>: BaseFragment(), SkyDownfal
         val tv = sbView.findViewById<TextView>(R.id.snackbar_text)
         tv.textAlignment = View.TEXT_ALIGNMENT_CENTER
         tv.gravity = Gravity.CENTER_HORIZONTAL
-        tv.typeface = Typeface.createFromAsset(requireContext().assets, "font/level_personal.ttf")
+        //TODO: вернуть шрифт
+        //tv.typeface = Typeface.createFromAsset(requireContext().assets, "font/level_personal.ttf")
     }
 
     private fun showSnackBar() {
@@ -47,20 +47,22 @@ abstract class LevelsFragment<BUTTONS : ButtonLevel>: BaseFragment(), SkyDownfal
         }
     }
 
+    open fun isWeather() = false
+
     abstract fun createOneAdapter()
 
     abstract fun createTwoAdapter()
 
     abstract fun createThreeAdapter()
 
-    abstract fun createGrid(month: Month): LevelsAdapter<BUTTONS>
+    abstract fun createGrid(month: Month): LevelsAdapter<BUTTON_LEVEL>
 
-    abstract fun create(month: Month): ArrayList<BUTTONS>
+    abstract fun create(month: Month): ArrayList<BUTTON_LEVEL>
 
     private fun refreshButtonsStatus() {
-        oneAdapter.refreshStatus()
-        twoAdapter.refreshStatus()
-        threeAdapter.refreshStatus()
+        oneAdapter?.refreshStatus()
+        twoAdapter?.refreshStatus()
+        threeAdapter?.refreshStatus()
     }
 
     override fun onClickLevel(level: Int, month: Month) {
@@ -84,15 +86,20 @@ abstract class LevelsFragment<BUTTONS : ButtonLevel>: BaseFragment(), SkyDownfal
 
     override fun onStop() {
         super.onStop()
-        onStopSkyDownfallAnimation()
+        if(isWeather()) {
+            onStopSkyDownfallAnimation()
+        }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        onStopSkyDownfallAnimation()
+        if(isWeather()) {
+            onStopSkyDownfallAnimation()
+        }
     }
 
     companion object {
         const val NUMBER_LEVEL = 3
+        const val HEIGHT_BOTTOM_IMAGE = 0.646f
     }
 }

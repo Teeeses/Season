@@ -12,6 +12,5 @@ enum class Month(val dais: Int, val season: Season) {
     SEPTEMBER(30, Season.AUTUMN),
     OCTOBER(31, Season.AUTUMN),
     NOVEMBER(30, Season.AUTUMN),
-    DECEMBER(31, Season.WINTER),
-
+    DECEMBER(31, Season.WINTER);
 }

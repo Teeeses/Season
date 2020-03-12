@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+                name="Actions"
+                type="com.example.game.common.intrefaces.OnGameBarClickListener" />
+    </data>
+
+    <RelativeLayout xmlns:autofit="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <LinearLayout
+                android:id="@+id/layoutMenu"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bar_height"
+                android:background="@color/menu_blue"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.55"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/mini_margin">
+
+                <ImageView
+                        android:id="@+id/btnMenu"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/mini_margin"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:onClick="@{() -> Actions.onMenu()}"
+                        android:src="@drawable/icon_menu" />
+
+                <ImageView
+                        android:id="@+id/btnRestart"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/mini_margin"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:onClick="@{() -> Actions.onRestart()}"
+                        android:src="@drawable/icon_again" />
+
+                <ImageView
+                        android:id="@+id/btnHelp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:onClick="@{() -> Actions.onHelp()}"
+                        android:src="@drawable/icon_help" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/standard_margin"
+                    android:layout_weight="0.45" />
+
+        </LinearLayout>
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/mini_margin"
+                android:layout_below="@+id/layoutMenu"
+                android:background="@color/menu_dark_blue" />
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.55" />
+
+            <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/standard_margin"
+                    android:layout_marginRight="@dimen/standard_margin"
+                    android:layout_weight="0.45">
+
+                <me.grantland.widget.AutofitTextView
+                        android:id="@+id/tvNumberLevel"
+                        style="@style/LevelFontStyle"
+                        android:layout_width="@dimen/block_level_weight"
+                        android:layout_height="@dimen/block_level_height"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/mini_margin"
+                        android:background="@drawable/block_level"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/big_text"
+                        android:textStyle="bold"
+                        autofit:minTextSize="@dimen/mini_text" />
+
+
+                <me.grantland.widget.AutofitTextView
+                        android:id="@+id/tvLevel"
+                        style="@style/LevelFontStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/block_level_height"
+                        android:layout_below="@+id/tvNumberLevel"
+                        android:layout_marginTop="@dimen/margin_block_top"
+                        android:background="@drawable/block_level_text"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="@string/level"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/big_text"
+                        android:textStyle="bold"
+                        autofit:minTextSize="@dimen/mini_text" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+</layout>
